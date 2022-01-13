@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Create from "./Create";
+import info from './DataAccess'
+
+
 
 const List=()=>{
+    const [cview,setCview]=useState(false)
+
+    const callCreate=()=>{
+        setCview(true)
+    }
     return(
         <>
+            {(cview)?
+            <>
+                <Create/>
+                <button className="btn btn-outline-dark" 
+                onClick={()=>setCview(false)}>
+                    Back
+                </button>
+            </>:
+            <>
+            <button className="btn btn-outline-success" onClick={callCreate}>
+                Create
+            </button>
             <div className="row justify-content-center">
                 <div className="col-lg-8 col-md-10 col-sm-12 table-responsive">
-                    <table className="table table-stripped table-hover shodow">
+                    <table className="table table-stripped table-hover shodow text-light bg-info">
                         <thead>
                             <tr>
                                 <th>Name of the Corporate</th>
@@ -18,17 +39,26 @@ const List=()=>{
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>TCS</td>
-                                <td>Chennai, Banglore, Hyderabad, Cochin</td>
-                                <td>50000</td><td>3.5</td>
-                                <td>Product, Support</td>
-                                <td>IRCTC, PassportSeva</td>
-                            </tr>
+                            {info.map((data,index)=>(
+                                <tr>
+                                    <td>{data.org}</td>
+                                    <td>
+                                        {data.locations.map((ele)=>(
+                                            <p>{ele}</p>
+                                        ))}
+                                    </td>
+                                    <td>{data.employees}</td>
+                                    <td>{data.basic}</td>
+                                    <td>{data.services}</td>
+                                    <td>{data.benchmarks}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             </div>
+            </>
+            }
         </>
     );
 }

@@ -1,5 +1,6 @@
 
 import React from "react";
+import Create from "./Create";
 import List from "./List";
 
 // function App()
@@ -49,6 +50,7 @@ import List from "./List";
 const App=()=>{
     return(
         <>
+            {/* <Create/> */}
             <List/>
         </>
     );
