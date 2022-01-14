@@ -20,7 +20,8 @@ const List=()=>{
                 onClick={()=>setCview(false)}>
                     Back
                 </button>
-            </>:
+            </>
+            :
             <>
             <button className="btn btn-outline-success" onClick={callCreate}>
                 Create
@@ -42,11 +43,12 @@ const List=()=>{
                             {info.map((data,index)=>(
                                 <tr>
                                     <td>{data.org}</td>
-                                    <td>
+                                    <td>{data.locations}</td>
+                                    {/* <td>
                                         {data.locations.map((ele)=>(
                                             <p>{ele}</p>
                                         ))}
-                                    </td>
+                                    </td> */}
                                     <td>{data.employees}</td>
                                     <td>{data.basic}</td>
                                     <td>{data.services}</td>

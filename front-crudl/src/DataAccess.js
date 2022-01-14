@@ -33,4 +33,10 @@ let info=[
     }
 ]
 
+const putting=(obj)=>{
+    info.push(obj)
+    alert("New Corporate added")
+}
+
+export {putting}
 export default info;
