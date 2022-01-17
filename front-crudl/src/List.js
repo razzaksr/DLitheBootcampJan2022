@@ -3,6 +3,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Create from "./Create";
 import info, { getting } from './DataAccess'
 import Read from "./Read";
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 
@@ -58,6 +60,7 @@ const List=()=>{
                                 <th>Basic salary</th>
                                 <th>Services</th>
                                 <th>Benchmark's</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +84,16 @@ const List=()=>{
                                     <td>{data.basic}</td>
                                     <td>{data.services}</td>
                                     <td>{data.benchmarks}</td>
+                                    <td>
+                                        <button className="btn btn-outline-danger">
+                                            <RemoveCircleIcon/>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-outline-warning">
+                                            <EditIcon/>
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
