@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Create from "./Create";
-import info from './DataAccess'
+import info, { getting } from './DataAccess'
 import Read from "./Read";
 
 
@@ -9,6 +9,16 @@ import Read from "./Read";
 const List=()=>{
     const [cview,setCview]=useState(false)
     const [rview,setRview]=useState(false)
+    const [obj,setObj]=useState(
+        {
+            "org":"",
+            "locations":"",
+            "employees":0,
+            "basic":0.0,
+            "services":"",
+            "benchmarks":""
+        }
+    )
 
     const callCreate=()=>{
         setCview(true)
@@ -26,7 +36,7 @@ const List=()=>{
             :
             (rview)?
             <>
-                <Read/>
+                <Read corp={obj}/>
                 <button className="btn btn-outline-dark" 
                 onClick={()=>setRview(false)}>
                     Back
@@ -53,7 +63,14 @@ const List=()=>{
                         <tbody>
                             {info.map((data,index)=>(
                                 <tr>
-                                    <td onClick={()=>setRview(true)}>{data.org}</td>
+                                    <td onClick={
+                                        ()=>{
+                                            setRview(true)
+                                            const tmp=getting(data.org)
+                                            setObj(tmp)
+                                        }}>
+                                        {data.org}
+                                    </td>
                                     <td>{data.locations}</td>
                                     {/* <td>
                                         {data.locations.map((ele)=>(

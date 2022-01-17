@@ -39,10 +39,10 @@ const putting=(obj)=>{
 }
 
 const getting=(name)=>{
-    info.map((elem)=>{
-        if(elem.org===name)
-            return elem
+    const newone=info.filter((elem)=>{
+        return elem.org===name
     })
+    return newone[0]
 }
 
 const byPos=(index)=>{
@@ -52,5 +52,5 @@ const byPos=(index)=>{
         return index+" is not match in directory"
 }
 
-export {putting}
+export {putting,getting,byPos}
 export default info;
