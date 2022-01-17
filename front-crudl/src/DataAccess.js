@@ -38,5 +38,19 @@ const putting=(obj)=>{
     alert("New Corporate added")
 }
 
+const getting=(name)=>{
+    info.map((elem)=>{
+        if(elem.org===name)
+            return elem
+    })
+}
+
+const byPos=(index)=>{
+    if(index<info.length())
+        return info[index]
+    else
+        return index+" is not match in directory"
+}
+
 export {putting}
 export default info;

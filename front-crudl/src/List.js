@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Create from "./Create";
 import info from './DataAccess'
+import Read from "./Read";
 
 
 
 const List=()=>{
     const [cview,setCview]=useState(false)
+    const [rview,setRview]=useState(false)
 
     const callCreate=()=>{
         setCview(true)
@@ -18,6 +20,15 @@ const List=()=>{
                 <Create/>
                 <button className="btn btn-outline-dark" 
                 onClick={()=>setCview(false)}>
+                    Back
+                </button>
+            </>
+            :
+            (rview)?
+            <>
+                <Read/>
+                <button className="btn btn-outline-dark" 
+                onClick={()=>setRview(false)}>
                     Back
                 </button>
             </>
@@ -42,7 +53,7 @@ const List=()=>{
                         <tbody>
                             {info.map((data,index)=>(
                                 <tr>
-                                    <td>{data.org}</td>
+                                    <td onClick={()=>setRview(true)}>{data.org}</td>
                                     <td>{data.locations}</td>
                                     {/* <td>
                                         {data.locations.map((ele)=>(
