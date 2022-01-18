@@ -94,7 +94,7 @@ const Edit=(kalpana)=>{
                         <div className="row justify-content-around">
                             <Button variant="outlined" color="primary" className="col-4" 
                             onClick={()=>{
-                                alert(JSON.stringify(data)+" "+pos)
+                                //alert(JSON.stringify(data)+" "+pos)
                                 update(data,pos)
                             }}>
                                 <UpgradeIcon/>
