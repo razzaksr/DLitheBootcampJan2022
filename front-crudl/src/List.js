@@ -13,9 +13,9 @@ const List=()=>{
     const [cview,setCview]=useState(false)
     const [rview,setRview]=useState(false)
     const [eview,setEview]=useState(false)
+    const [pos,setPos]=useState(0)
     const [obj,setObj]=useState(
         {
-            "pos":0,
             "org":"",
             "locations":"",
             "employees":0,
@@ -50,7 +50,7 @@ const List=()=>{
             :
             (eview)?
             <>
-                <Edit corp={obj}/>
+                <Edit corp={obj} order={pos}/>
                 <button className="btn btn-outline-dark" 
                 onClick={()=>setEview(false)}>
                     Back
@@ -106,7 +106,7 @@ const List=()=>{
                                             ()=>{
                                                 setEview(true)
                                                 const tmp=getting(data.org)
-                                                tmp.pos={index}
+                                                setPos(index)
                                                 setObj(tmp)
                                             }
                                         }>

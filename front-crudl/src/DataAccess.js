@@ -45,12 +45,10 @@ const getting=(name)=>{
     return newone[0]
 }
 
-const byPos=(index)=>{
-    if(index<info.length())
-        return info[index]
-    else
-        return index+" is not match in directory"
+const update=(corporate,index)=>{
+    info[index]=corporate
+    alert(corporate.org+" has updated")
 }
 
-export {putting,getting,byPos}
+export {putting,getting,update}
 export default info;

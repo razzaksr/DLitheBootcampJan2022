@@ -6,12 +6,13 @@ import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { update } from "./DataAccess";
 
 
 const Edit=(kalpana)=>{
-    const[data,setDate]=useState(
+    const [pos,setPos]=useState(kalpana.order)
+    const [data,setDate]=useState(
         {
-            "pos":kalpana.corp.pos,
             "org":kalpana.corp.org,
             "locations":kalpana.corp.locations,
             "employees":kalpana.corp.employees,
@@ -30,11 +31,6 @@ const Edit=(kalpana)=>{
                 [name]:value
             }
         })
-    }
-
-    const adding=()=>{
-        alert(JSON.stringify(data));
-        //putting(data)
     }
 
     return(
@@ -96,7 +92,11 @@ const Edit=(kalpana)=>{
                             value={data.benchmarks}
                         />
                         <div className="row justify-content-around">
-                            <Button variant="outlined" color="primary" className="col-4" onClick={adding}>
+                            <Button variant="outlined" color="primary" className="col-4" 
+                            onClick={()=>{
+                                alert(JSON.stringify(data)+" "+pos)
+                                update(data,pos)
+                            }}>
                                 <UpgradeIcon/>
                             </Button>
                             <Button variant="outlined" color="error" className="col-4">
