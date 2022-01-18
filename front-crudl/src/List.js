@@ -5,14 +5,17 @@ import info, { getting } from './DataAccess'
 import Read from "./Read";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditIcon from '@mui/icons-material/Edit';
+import Edit from "./Edit";
 
 
 
 const List=()=>{
     const [cview,setCview]=useState(false)
     const [rview,setRview]=useState(false)
+    const [eview,setEview]=useState(false)
     const [obj,setObj]=useState(
         {
+            "pos":0,
             "org":"",
             "locations":"",
             "employees":0,
@@ -41,6 +44,15 @@ const List=()=>{
                 <Read corp={obj}/>
                 <button className="btn btn-outline-dark" 
                 onClick={()=>setRview(false)}>
+                    Back
+                </button>
+            </>
+            :
+            (eview)?
+            <>
+                <Edit corp={obj}/>
+                <button className="btn btn-outline-dark" 
+                onClick={()=>setEview(false)}>
                     Back
                 </button>
             </>
@@ -90,7 +102,14 @@ const List=()=>{
                                         </button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline-warning">
+                                        <button className="btn btn-outline-warning"onClick={
+                                            ()=>{
+                                                setEview(true)
+                                                const tmp=getting(data.org)
+                                                tmp.pos={index}
+                                                setObj(tmp)
+                                            }
+                                        }>
                                             <EditIcon/>
                                         </button>
                                     </td>
