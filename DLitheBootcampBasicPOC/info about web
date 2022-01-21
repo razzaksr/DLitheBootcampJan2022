@@ -1,0 +1,151 @@
+Class: Entity, Controller, Service
+members: 
+variable/object: in order to store the data(no intialization required)
+functions: in order to perform some task over those data
+functions
+{
+// body of the function/ definition/ non abstract
+}
+
+look like:
+class CLASSNAME
+{
+variables
+object
+function()
+{
+// body of the function
+}
+}
+
+// object creation
+CLASSNAME objectName=new CLASSNAME();
+
+
+Interface: Repository
+members: 
+variable/object: have to initialize(assign some value while declaring itself)
+functions: may not have a body/ abstract functions
+
+look like:
+interface INTERFACE
+{
+function();// abstract method
+}
+
+Repository:
+has in built methods/functions to perform database related operations
+
+1. JpaRepository
+2. CrudRepository
+
+Entity Class
+Object Relational Mapping
+
+save(object)	>> insert new record in the table
+findAll		>> fetch all the records from table>> List<Entity>
+findById	>> fetch one record that matching primary key>> Entity
+delete		>> delete a record from the table>> primary key/ Entity
+
+
+class extends class
+interface extends interface
+class implements interface
+
+
+Service Class(spring component): intermediator between spring and hibernate/jpa
+write definintion/ implementation of repository interface methods
+@Service
+
+
+
+Application:
+Presentation logic	: ui
+Business logic		: actions
+Data logic		: storage
+
+architectures:
+
+Single tier architecture:
+3 logics in single machine>> desktop app>> ms office, photoshop
+
+Two tier architecture:
+distributed: http
+server: response to client
+presentation
+business
+data
+
+client: request to server
+presentation
+business
+
+Three tier:
+client: presentation, business
+app server: presentation, business : 
+eg:
+go daddy
+hostgator
+aws
+google cloud
+
+database server: data
+eg:
+oracle
+mysql
+ms sql
+derby
+mongo
+
+MVC architecture:
+Model		: Copy of the data	>> Entity, Repository
+View		: Presentation		>> UI	>> react client
+Controller	: Business logic	>> Controller, Service
+
+
+Controller:
+two types of controller
+1. web page controller>> receives url and response as pages to client
+2. web service controller>> receives url and response as JSON to client(another website, mobiles apps)
+
+Netbanking as ICICI: pages: web page controller
+login
+transfer
+request for cheque book
+
+Mobile App of ICICI: web - service controller: JSON
+login 
+transfer
+request for cheque book
+
+
+Web service: 
+google map >> web app >> javascript
+maps.google.com >> web page controller
+
+web service controller:
+receives Json/xml request, resoponse as json/ xml
+
+	Common format: xml, json
+
+just dial >> web app >> Java
+makemytrip>> web app>> dotnet
+ola	>> mobile app >> swift
+uber	>> mobile app	>> android
+zomato	>> mobile app	>> android
+
+
+tech:
+soap api>> xml
+rest api>> json/ xml
+
+JSON is a light weight 
+{key:value}
+
+
+webservice methods: insertion, fetch, update,delete,............
+
+PostMapping("url")	>> insertion
+GetMapping("url")	>> fetch everything/ one
+PutMapping("url")	>> update
+DeleteMapping("url")	>> delete
