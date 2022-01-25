@@ -6,18 +6,19 @@ import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
-import { putting } from "./DataAccess";
+import { append } from "./API";
+//import { putting } from "./DataAccess";
 
 const Create=()=>{
 
     const[data,setDate]=useState(
         {
             "org":"",
-            "locations":"",
+            "locations":[],
             "employees":0,
             "basic":0.0,
-            "services":"",
-            "benchmarks":""
+            "services":[],
+            "benchmarks":[]
         }
     )
 
@@ -32,9 +33,18 @@ const Create=()=>{
         })
     }
 
-    const adding=()=>{
-        alert(JSON.stringify(data));
-        putting(data)
+    const adding=async()=>{
+
+        // replacing simple text with , to list of text by , as delimiter
+        data.locations=data.locations.split(',')
+        data.services=data.services.split(',')
+        data.benchmarks=data.benchmarks.split(',')
+
+        alert(JSON.stringify(data))
+        //putting(data)
+        const yet=await append(data) // data: json of corporate
+        alert(yet.data)
+        // yet.data >> response keyword from back end which recieved by yet variable via axios
     }
 
     return(
