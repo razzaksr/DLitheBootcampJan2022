@@ -14,4 +14,9 @@ const traverse=async()=>{
     return tmp
 }
 
-export {append, traverse}
+const oneAtTime=async(param)=>{
+    const tmp = await axios.get(`${url}/${param}`)
+    return tmp
+}
+
+export {append, traverse, oneAtTime}

@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 import poc.basic.react.DLitheBootcampBasicPOC.entity.Corporate;
 import poc.basic.react.DLitheBootcampBasicPOC.repository.CorporateRepository;
 
+/*
+ * save(object)	// new
+ * findAll()	// list<entity>
+ * findById(id)/ getById(id)	// entity/ corporate
+ */
+
 @Service
 public class CorporateService
 {
@@ -22,5 +28,10 @@ public class CorporateService
 	public List<Corporate> readEverything()
 	{
 		return repo.findAll();
+	}
+	
+	public Corporate readOne(String id)
+	{
+		return repo.findById(id).orElse(new Corporate());
 	}
 }

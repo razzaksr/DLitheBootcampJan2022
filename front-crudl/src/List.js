@@ -6,7 +6,7 @@ import Read from "./Read";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import Edit from "./Edit";
-import { traverse } from "./API";
+import { oneAtTime, traverse } from "./API";
 
 
 
@@ -40,6 +40,11 @@ const List=()=>{
 
     const callCreate=()=>{
         setCview(true)
+    }
+
+    const reading=async(one)=>{
+        const hey=await oneAtTime(one)
+        setObj(hey.data)
     }
     return(
         <>
@@ -94,8 +99,7 @@ const List=()=>{
                                     <td onClick={
                                         ()=>{
                                             setRview(true)
-                                            const tmp=getting(data.org)
-                                            setObj(tmp)
+                                            reading(data.org)
                                         }}>
                                         {data.org}
                                     </td>
