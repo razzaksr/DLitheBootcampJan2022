@@ -11,7 +11,7 @@ import poc.basic.react.DLitheBootcampBasicPOC.repository.CorporateRepository;
 /*
  * save(object)	// new
  * findAll()	// list<entity>
- * findById(id)/ getById(id)	// entity/ corporate
+ * findById(id)>> json/xml / getById(id)>> xml>> dataformat.xml	// entity/ corporate
  */
 
 @Service
