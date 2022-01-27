@@ -1,5 +1,7 @@
 package poc.basic.react.DLitheBootcampBasicPOC.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,8 @@ public class CorporateService
 		return repo.save(object);// pass the entity object that can be converted as record in the table
 	}
 	
+	public List<Corporate> readEverything()
+	{
+		return repo.findAll();
+	}
 }

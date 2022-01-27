@@ -9,4 +9,9 @@ const append=async(obj)=>{
     return ack
 }
 
-export {append}
+const traverse=async()=>{
+    const tmp=await axios.get(`${url}/`)
+    return tmp
+}
+
+export {append, traverse}
