@@ -6,7 +6,8 @@ import Read from "./Read";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import Edit from "./Edit";
-import { oneAtTime, traverse } from "./API";
+import Button from '@mui/material/Button';
+import { oneAtTime, terminate, traverse } from "./API";
 
 
 
@@ -45,6 +46,12 @@ const List=()=>{
     const reading=async(one)=>{
         const hey=await oneAtTime(one)
         setObj(hey.data)
+    }
+
+    const abort=async(par)=>{
+        const yet=await terminate(par)
+        alert(yet.data)
+        window.location.assign("http://localhost:3000")
     }
     return(
         <>
@@ -124,12 +131,16 @@ const List=()=>{
                                         ))}
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline-danger">
+                                        <Button color="error" className="btn btn-outline-danger" onClick={
+                                            ()=>{
+                                                abort(data.org)
+                                            }
+                                        }>
                                             <RemoveCircleIcon/>
-                                        </button>
+                                        </Button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline-warning"onClick={
+                                        <Button color="warning" className="btn btn-outline-warning"onClick={
                                             ()=>{
                                                 setEview(true)
                                                 const tmp=getting(data.org)
@@ -138,7 +149,7 @@ const List=()=>{
                                             }
                                         }>
                                             <EditIcon/>
-                                        </button>
+                                        </Button>
                                     </td>
                                 </tr>
                             ))}

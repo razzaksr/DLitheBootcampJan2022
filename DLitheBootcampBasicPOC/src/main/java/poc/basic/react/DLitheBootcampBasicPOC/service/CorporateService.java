@@ -12,6 +12,7 @@ import poc.basic.react.DLitheBootcampBasicPOC.repository.CorporateRepository;
  * save(object)	// new
  * findAll()	// list<entity>
  * findById(id)>> json/xml / getById(id)>> xml>> dataformat.xml	// entity/ corporate
+ * deleteById(id)/delete(object)	>> void
  */
 
 @Service
@@ -33,5 +34,12 @@ public class CorporateService
 	public Corporate readOne(String id)
 	{
 		return repo.findById(id).orElse(new Corporate());
+	}
+	
+	public String eraseOne(String id)
+	{
+		String name=readOne(id).getOrg()+" "+readOne(id).getBasic()+" has deleted\n";
+		repo.deleteById(id);
+		return name;
 	}
 }
