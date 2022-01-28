@@ -9,7 +9,7 @@ import poc.basic.react.DLitheBootcampBasicPOC.entity.Corporate;
 import poc.basic.react.DLitheBootcampBasicPOC.repository.CorporateRepository;
 
 /*
- * save(object)	// new
+ * save(object)	// new/ update>> if primary key/id object already there it will update, else add the new entity 
  * findAll()	// list<entity>
  * findById(id)>> json/xml / getById(id)>> xml>> dataformat.xml	// entity/ corporate
  * deleteById(id)/delete(object)	>> void
@@ -21,7 +21,7 @@ public class CorporateService
 	@Autowired	// get the instance/memory of the component
 	CorporateRepository repo;
 	
-	public Corporate addingNewOne(Corporate object)
+	public Corporate interact(Corporate object)
 	{
 		return repo.save(object);// pass the entity object that can be converted as record in the table
 	}
